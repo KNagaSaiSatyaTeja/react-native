@@ -3,13 +3,13 @@
     "name": "my-app",
     "slug": "my-app",
     "version": "1.0.0",
-
+    "platforms": ["ios", "android", "web"],
     "web": {
       "favicon": "./assets/favicon.png"
     },
-
     "experiments": {
-      "tsconfigPaths": true
+      "tsconfigPaths": true,
+      "newArchEnabled": true
     },
 
     "plugins": [],

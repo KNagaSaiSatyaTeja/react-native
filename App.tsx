@@ -1,13 +1,15 @@
-import { ScreenContent } from 'components/ScreenContent';
-import { StatusBar } from 'expo-status-bar';
-
+import OnboardingScreen from 'components/OnboardingScreen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './global.css';
 
 export default function App() {
+  const handleOnboardingComplete = () => {
+    console.log('Onboarding completed!');
+  };
+
   return (
-    <>
-      <ScreenContent title="Home" path="App.tsx" />
-      <StatusBar style="auto" />
-    </>
+    <SafeAreaProvider>
+      <OnboardingScreen onComplete={handleOnboardingComplete} />
+    </SafeAreaProvider>
   );
 }
