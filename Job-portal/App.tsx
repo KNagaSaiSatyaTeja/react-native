@@ -1,6 +1,7 @@
 import OnboardingScreen from 'components/OnboardingScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './global.css';
+import { Platform } from 'react-native';
 
 export default function App() {
   const handleOnboardingComplete = () => {
@@ -9,7 +10,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <OnboardingScreen onComplete={handleOnboardingComplete} />
+      {Platform.OS === 'android' && <OnboardingScreen onComplete={handleOnboardingComplete} />}
     </SafeAreaProvider>
   );
 }

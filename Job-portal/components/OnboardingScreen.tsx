@@ -3,25 +3,25 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, Pressable, Image } from 'react-native';
 
-import clgImg from '../assets/collegelogo.png';
+import clgImg from '../assets/collegelogo.png'; // Adjust the path as necessary
 
 const ONBOARDING_DATA = [
   {
     title: 'Welcome to MyApp',
     description: 'Your one-stop solution for everything you need',
-    color: '#4F46E5',
+    color: '#123',
   },
   {
     title: 'Easy to Use',
     description: 'Simple and intuitive interface for the best experience',
-    color: '#7C3AED',
+    color: '#456',
   },
   {
     title: 'Get Started',
     description: 'Join thousands of happy users today',
     color: '#6366F1',
   },
-];
+]; // Adjust the path as necessary
 
 const OnboardingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -33,7 +33,7 @@ const OnboardingScreen = ({ onComplete }: { onComplete: () => void }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} className="w-full">
       <ScrollView
         horizontal
         pagingEnabled
@@ -41,9 +41,14 @@ const OnboardingScreen = ({ onComplete }: { onComplete: () => void }) => {
         onScroll={handleScroll}
         scrollEventThrottle={16}>
         {ONBOARDING_DATA.map((item, index) => (
-          <View className="h-full" key={index}>
-            <View style={[styles.slide, { width, backgroundColor: item.color }]}>
-              <Image source={clgImg} alt="College" style={{ width: 100, height: 100 }} />
+          <View className="h-full w-auto " key={index}>
+            <View className="w-full" style={[styles.slide, { width, backgroundColor: item.color }]}>
+              <Image
+                source={clgImg}
+                alt="College Logo"
+                style={[styles.image]}
+                resizeMode="contain"
+              />
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.description}>{item.description}</Text>
             </View>
@@ -123,6 +128,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#000000',
+  },
+  image: {
+    width: Dimensions.get('window').width * 0.95,
+    height: Dimensions.get('window').width * 0.3,
+    marginVertical: 20,
   },
 });
 
